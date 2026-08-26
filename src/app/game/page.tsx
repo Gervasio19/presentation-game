@@ -103,7 +103,7 @@ export default function GamePage() {
     router.push("/");
   }, [router]);
 
-  const isCardInteractive = phase === "playing" && !isProcessing.current;
+  const isCardInteractive = phase === "playing";
 
   return (
     <div className="relative min-h-dvh bg-zinc-950 text-white flex flex-col overflow-hidden">
