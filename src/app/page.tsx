@@ -136,8 +136,8 @@ export default function MainMenu() {
               </p>
               <p>
                 <span className="text-white font-semibold">Checkpoints</span> are saved
-                at Days 3, 6, and 9. When you fail, choose any checkpoint to
-                continue from.
+                automatically every day. When you fail, choose any previous day to
+                rewind time and try a different path.
               </p>
               <p>
                 Reach <span className="text-white font-semibold">Day 10</span> with the

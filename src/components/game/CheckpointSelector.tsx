@@ -60,7 +60,7 @@ export default function CheckpointSelector({
         </div>
 
         {/* Checkpoint cards */}
-        <div className="space-y-3">
+        <div className="space-y-3 max-h-[50vh] overflow-y-auto pr-2">
           {checkpoints.map((cp, i) => (
             <motion.button
               key={cp.day}
@@ -74,7 +74,7 @@ export default function CheckpointSelector({
               "
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 1.2 + i * 0.15, duration: 0.4 }}
+              transition={{ delay: 1.2 + Math.min(i, 5) * 0.1, duration: 0.4 }}
             >
               <div className="flex items-center justify-between">
                 <div>

@@ -13,6 +13,7 @@ import {
   makeChoice,
   restoreCheckpoint,
 } from "@/lib/game/gameEngine";
+import { getAvailableCheckpoints } from "@/lib/game/checkpointManager";
 import { getCardForDay } from "@/data/cards";
 
 import GameCard, { GameCardHandle } from "@/components/game/GameCard";
@@ -104,6 +105,7 @@ export default function GamePage() {
   }, [router]);
 
   const isCardInteractive = phase === "playing";
+  const availableCheckpoints = getAvailableCheckpoints(gameState.checkpoints, gameState.day);
 
   return (
     <div className="relative min-h-dvh bg-zinc-950 text-white flex flex-col overflow-hidden">
@@ -166,14 +168,14 @@ export default function GamePage() {
 
       {/* Overlays */}
       <AnimatePresence>
-        {phase === "dead" && gameState.checkpoints.length > 0 && (
+        {phase === "dead" && availableCheckpoints.length > 0 && (
           <CheckpointSelector
-            checkpoints={gameState.checkpoints}
+            checkpoints={availableCheckpoints}
             onSelect={handleRestoreCheckpoint}
           />
         )}
 
-        {(phase === "dead" && gameState.checkpoints.length === 0) || phase === "eliminated" ? (
+        {(phase === "dead" && availableCheckpoints.length === 0) || phase === "eliminated" ? (
           <DeathScreen
             dayReached={gameState.day}
             onEliminated={handleEliminated}

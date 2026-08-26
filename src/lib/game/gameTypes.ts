@@ -36,5 +36,4 @@ export type GameAction =
   | { type: "RESTART" };
 
 export const TOTAL_DAYS = 10;
-export const CHECKPOINT_DAYS = [3, 6, 9] as const;
 export const INITIAL_PROGRESS = 50;

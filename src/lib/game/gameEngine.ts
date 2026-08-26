@@ -11,7 +11,6 @@ import {
   INITIAL_PROGRESS,
 } from "./gameTypes";
 import {
-  isCheckpointDay,
   createCheckpoint,
   addCheckpoint,
   hasCheckpoints,
@@ -52,19 +51,16 @@ export function makeChoice(
 
   // ── Death check ──
   if (newProgress <= 0) {
-    if (hasCheckpoints(state.checkpoints)) {
+    if (hasCheckpoints(state.checkpoints, state.day)) {
       return { ...state, progress: 0, status: "dead" };
     }
     // No checkpoints → eliminated
     return { ...state, progress: 0, status: "eliminated" };
   }
 
-  // ── Checkpoint creation (after surviving the day) ──
-  let newCheckpoints = state.checkpoints;
-  if (isCheckpointDay(state.day)) {
-    const cp = createCheckpoint(state.day, newProgress);
-    newCheckpoints = addCheckpoint(state.checkpoints, cp);
-  }
+  // ── Checkpoint creation (save state at the start of the current day) ──
+  const cp = createCheckpoint(state.day, state.progress);
+  const newCheckpoints = addCheckpoint(state.checkpoints, cp);
 
   // ── Day 10 completion ──
   if (state.day >= TOTAL_DAYS) {

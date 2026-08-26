@@ -2,14 +2,8 @@
 // LAPSE — Checkpoint Manager
 // ============================================================
 
-import { Checkpoint, CHECKPOINT_DAYS } from "./gameTypes";
+import { Checkpoint } from "./gameTypes";
 
-/**
- * Determine whether a given day triggers a checkpoint save.
- */
-export function isCheckpointDay(day: number): boolean {
-  return (CHECKPOINT_DAYS as readonly number[]).includes(day);
-}
 
 /**
  * Create a checkpoint snapshot from the current game state.
@@ -31,8 +25,21 @@ export function addCheckpoint(
 }
 
 /**
+ * Get the available checkpoints for the player to choose from.
+ * Returns up to 3 immediately preceding days.
+ */
+export function getAvailableCheckpoints(
+  checkpoints: Checkpoint[],
+  currentDay: number
+): Checkpoint[] {
+  return checkpoints
+    .filter((cp) => cp.day >= currentDay - 3 && cp.day < currentDay)
+    .sort((a, b) => a.day - b.day);
+}
+
+/**
  * Check if the player has any checkpoints available for restoration.
  */
-export function hasCheckpoints(checkpoints: Checkpoint[]): boolean {
-  return checkpoints.length > 0;
+export function hasCheckpoints(checkpoints: Checkpoint[], currentDay: number): boolean {
+  return getAvailableCheckpoints(checkpoints, currentDay).length > 0;
 }
