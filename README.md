@@ -8,7 +8,7 @@
 
 **LAPSE** is a survival strategy game where you navigate a fictional city through a 10-day escalating crisis. Every day presents a critical dilemma: swipe left or right (or click choice buttons) to make tough decisions. 
 
-Each choice affects your **Progress meter**. If your progress drops to **0%**, the crisis collapses! Strategically reach checkpoint days to save your progress and survive all 10 days to achieve a high score.
+Each choice affects your **Progress meter**. If your progress drops to **0%**, the crisis collapses! The game automatically saves your progress every day, allowing you to retry from recent days if you fail. Survive all 10 days to achieve a high score.
 
 ---
 
@@ -17,8 +17,8 @@ Each choice affects your **Progress meter**. If your progress drops to **0%**, t
 - 🃏 **Tinder-style Swipe Mechanics**: Fluid, physics-based card dragging & swiping powered by Framer Motion.
 - 📱 **Mobile & Desktop Friendly**: Fully responsive UI with on-screen action buttons as an alternative to swiping.
 - 📊 **Dynamic Progress & Days**: Real-time progress bar tracking with color-coded feedback and day indicators.
-- 💾 **Automatic Checkpoints**: Checkpoints created automatically at milestone days (**Day 3, Day 6, Day 9**).
-- 🔄 **Checkpoint Recovery System**: Restore your state from saved checkpoints upon failure or face elimination if no checkpoints were saved.
+- 💾 **Automatic Checkpoints**: Checkpoints are created automatically at the start of every day.
+- 🔄 **Checkpoint Recovery System**: Restore your state from up to 3 recent days upon failure, or face elimination if you fail on Day 1.
 - 🏆 **Results & Scoring**: Detailed end-game breakdown (Days survived, final progress, checkpoints collected, and score calculation).
 
 ---
@@ -44,25 +44,15 @@ cd presentation-game
 ```
 
 ### 2. Install dependencies
+We recommend using `npm` as the project contains a `package-lock.json`.
+
 ```bash
 npm install
-# or
-yarn install
-# or
-pnpm install
-# or
-bun install
 ```
 
 ### 3. Run the development server
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 ### 4. Open in browser
@@ -85,16 +75,16 @@ Here is a quick checklist of scenarios to test out the core features and mechani
 - [ ] **Choice Buttons**: Click the left or right buttons below the card to trigger programmatic swipe animations.
 - [ ] **Progress Updates**: Verify that after making a choice, the progress bar updates smoothly with the corresponding effect.
 
-### 3. Early Death & Elimination (No Checkpoints)
-- [ ] Start a new run and intentionally make choices that reduce progress before Day 3 (e.g., Left on Day 1: `-8%`, Right on Day 2: `-5%`, Right on Day 3: `-12%`).
-- [ ] Once progress reaches `0%` before saving any checkpoint, verify that the **"YOU WERE ELIMINATED"** screen appears.
+### 3. Early Death & Elimination
+- [ ] Start a new run and intentionally make a choice that drastically reduces progress on **Day 1** so it reaches `0%`.
+- [ ] Verify that because you died on the very first day without any checkpoints, the **"YOU WERE ELIMINATED"** screen appears.
 - [ ] Click **"View Results"** to check the summary and try again.
 
 ### 4. Checkpoint Creation & Recovery
-- [ ] Play through **Day 3** safely with progress $> 0\%$. The game will automatically snapshot Checkpoint 1.
-- [ ] Continue playing into Days 4–6.
-- [ ] If progress hits `0%` on or after Day 4, verify that the **"CRISIS COLLAPSED"** screen opens showing saved checkpoints.
-- [ ] Click on a saved checkpoint (e.g. Day 03) to resume gameplay from that exact checkpoint state.
+- [ ] Play through **Day 1** safely. The game will automatically save a checkpoint.
+- [ ] Continue playing into Days 2–4.
+- [ ] Make a choice that drops your progress to `0%`. Verify that the **"CRISIS COLLAPSED"** screen opens showing your recently saved checkpoints (up to the last 3 days).
+- [ ] Click on a saved checkpoint to resume gameplay from that exact state.
 
 ### 5. Winning the Game (Survive 10 Days)
 - [ ] Balance your choices carefully to reach and finish **Day 10**.
