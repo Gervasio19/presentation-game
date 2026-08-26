@@ -67,7 +67,7 @@ const GameCard = forwardRef<GameCardHandle, GameCardProps>(
           className="absolute left-4 top-1/2 -translate-y-1/2 z-20 pointer-events-none"
           style={{ opacity: leftOpacity }}
         >
-          <div className="bg-rose-500/90 text-white text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-lg rotate-[-12deg] shadow-lg shadow-rose-500/30 max-w-[140px] text-center">
+          <div className="bg-amber-500/90 text-white text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-lg rotate-[-12deg] shadow-lg shadow-amber-500/30 max-w-[140px] text-center">
             {card.leftChoice}
           </div>
         </motion.div>
@@ -77,7 +77,7 @@ const GameCard = forwardRef<GameCardHandle, GameCardProps>(
           className="absolute right-4 top-1/2 -translate-y-1/2 z-20 pointer-events-none"
           style={{ opacity: rightOpacity }}
         >
-          <div className="bg-emerald-500/90 text-white text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-lg rotate-[12deg] shadow-lg shadow-emerald-500/30 max-w-[140px] text-center">
+          <div className="bg-amber-500/90 text-white text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-lg rotate-[12deg] shadow-lg shadow-amber-500/30 max-w-[140px] text-center">
             {card.rightChoice}
           </div>
         </motion.div>
@@ -126,19 +126,19 @@ const GameCard = forwardRef<GameCardHandle, GameCardProps>(
 
             {/* Choice hints */}
             <div className="flex items-stretch gap-3 pt-2">
-              <div className="flex-1 bg-rose-500/5 border border-rose-500/20 rounded-lg p-3 text-center">
-                <p className="text-[10px] uppercase tracking-widest text-rose-400/60 mb-1">
+              <div className="flex-1 bg-amber-500/5 border border-amber-500/20 rounded-lg p-3 text-center">
+                <p className="text-[10px] uppercase tracking-widest text-amber-400/60 mb-1">
                   ← Swipe Left
                 </p>
-                <p className="text-xs text-rose-300 font-medium">
+                <p className="text-xs text-amber-300 font-medium">
                   {card.leftChoice}
                 </p>
               </div>
-              <div className="flex-1 bg-emerald-500/5 border border-emerald-500/20 rounded-lg p-3 text-center">
-                <p className="text-[10px] uppercase tracking-widest text-emerald-400/60 mb-1">
+              <div className="flex-1 bg-amber-500/5 border border-amber-500/20 rounded-lg p-3 text-center">
+                <p className="text-[10px] uppercase tracking-widest text-amber-400/60 mb-1">
                   Swipe Right →
                 </p>
-                <p className="text-xs text-emerald-300 font-medium">
+                <p className="text-xs text-amber-300 font-medium">
                   {card.rightChoice}
                 </p>
               </div>

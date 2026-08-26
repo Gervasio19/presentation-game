@@ -25,11 +25,7 @@ export default function ChoiceButton({
         flex-1 py-3.5 px-4 rounded-xl text-sm font-semibold uppercase tracking-wider
         transition-all duration-200 border
         disabled:opacity-30 disabled:cursor-not-allowed
-        ${
-          isLeft
-            ? "bg-rose-500/10 border-rose-500/30 text-rose-400 hover:bg-rose-500/20 hover:border-rose-500/50 active:scale-95"
-            : "bg-emerald-500/10 border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/20 hover:border-emerald-500/50 active:scale-95"
-        }
+        "bg-amber-500/10 border-amber-500/30 text-amber-400 hover:bg-amber-500/20 hover:border-amber-500/50 active:scale-95"
       `}
     >
       <span className="flex items-center justify-center gap-2">
