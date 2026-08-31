@@ -64,7 +64,7 @@ export default function ShopModal({
   const handleConfirmQR = () => {
     if (selectedItem) {
       onBuyItem(selectedItem);
-      showToast("🎉 Chuyển khoản thành công! (Dù chưa nhận được tiền nhưng vì bạn đẹp trai/xinh gái nên tặng luôn ❤️)");
+      showToast("ching ching chong chong the phone ringing, đã nạp thành công 🔔💸");
       setActiveSubModal(null);
     }
   };
@@ -78,9 +78,9 @@ export default function ShopModal({
     if (isCorrect) {
       setTimeout(() => {
         onBuyItem(selectedItem);
-        showToast("🎓 Chính xác 100%! Bạn xứng đáng nhận vật phẩm vì đã nghe thuyết trình chăm chỉ!");
+        showToast("Chính xác! Đã nhận vật phẩm thành công.");
         setActiveSubModal(null);
-      }, 1500);
+      }, 1200);
     }
   };
 
@@ -138,7 +138,7 @@ export default function ShopModal({
             {!hasAnyItem ? (
               <div className="p-4 rounded-2xl bg-zinc-950/60 border border-zinc-800/80 text-center">
                 <p className="text-xs text-zinc-500 italic">
-                  Không có vật phẩm, công trình, hay hiệu ứng nào đang kích hoạt.
+                  Chưa có vật phẩm nào đang kích hoạt.
                 </p>
               </div>
             ) : (
@@ -148,7 +148,7 @@ export default function ShopModal({
                     <div className="flex items-center gap-2.5">
                       <span className="text-2xl">👁️</span>
                       <div>
-                        <p className="text-xs font-bold text-cyan-300">Thuốc Tiên Tri (Active)</p>
+                        <p className="text-xs font-bold text-cyan-300">Thuốc Tiên Tri</p>
                         <p className="text-[10px] text-cyan-400/80">Còn {inventory.oracleCharges} lượt xem trước</p>
                       </div>
                     </div>
@@ -163,8 +163,8 @@ export default function ShopModal({
                     <div className="flex items-center gap-2.5">
                       <span className="text-2xl">❤️</span>
                       <div>
-                        <p className="text-xs font-bold text-pink-300">Extra Heart (Cứu cánh)</p>
-                        <p className="text-[10px] text-pink-400/80">Tự động cứu mạng khi chạm 0% hoặc 100%</p>
+                        <p className="text-xs font-bold text-pink-300">Extra Heart (Mạng cứu sinh)</p>
+                        <p className="text-[10px] text-pink-400/80">Tự động hồi sinh 50% khi chạm 0% hoặc 100%</p>
                       </div>
                     </div>
                     <span className="text-xs font-bold text-pink-400 bg-pink-500/20 px-2.5 py-1 rounded-full">
@@ -178,15 +178,15 @@ export default function ShopModal({
                     <div className="flex items-center gap-2.5">
                       <span className="text-2xl">🏦</span>
                       <div>
-                        <p className="text-xs font-bold text-amber-300">Gói Cứu Trợ FED</p>
-                        <p className="text-[10px] text-amber-400/80">Đưa cả 4 chỉ số về lại mức an toàn 50%</p>
+                        <p className="text-xs font-bold text-amber-300">Gói Cứu Trợ Fed</p>
+                        <p className="text-[10px] text-amber-400/80">Cân bằng cả 4 chỉ số về mức 50%</p>
                       </div>
                     </div>
                     <button
                       onClick={onUseBailout}
                       className="text-[10px] bg-amber-500 hover:bg-amber-400 text-black font-bold px-3 py-1.5 rounded-lg transition-all shadow-md active:scale-95"
                     >
-                      DÙNG NGAY (x{inventory.bailoutCount})
+                      KÍCH HOẠT (x{inventory.bailoutCount})
                     </button>
                   </div>
                 )}

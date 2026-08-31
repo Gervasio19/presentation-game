@@ -102,13 +102,13 @@ export default function ChapterSummary({
             whileHover={{ scale: 1.01 }}
             whileTap={{ scale: 0.98 }}
           >
-            {isFinalChapter ? "Xem Kết Quả Chung Cuộc 🏆" : `Tiếp Tục Sang Chapter ${chapterInfo.chapter + 1} →`}
+            {isFinalChapter ? "View Final Results →" : `Continue to Chapter ${chapterInfo.chapter + 1} →`}
           </motion.button>
           <motion.button
             onClick={onSaveQuit}
             className="w-full py-2.5 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-zinc-400 hover:text-white text-xs font-medium transition-colors"
           >
-            Lưu & Thoát Ra Menu Chính
+            Save & Exit
           </motion.button>
         </div>
       </motion.div>

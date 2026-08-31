@@ -422,7 +422,7 @@ function GamePageInner() {
             exit={{ opacity: 0, y: -20 }}
             className="fixed top-16 left-1/2 -translate-x-1/2 z-50 px-4 py-2 rounded-2xl bg-pink-500/20 border border-pink-500 text-pink-200 text-xs font-bold shadow-2xl flex items-center gap-2 backdrop-blur-md"
           >
-            <span>❤️</span> EXTRA HEART KÍCH HOẠT! Bạn đã thoát khỏi cái chết trong gang tấc!
+            <span>❤️</span> Extra Heart kích hoạt (Hồi sinh 50%)
           </motion.div>
         )}
 
@@ -434,7 +434,7 @@ function GamePageInner() {
             exit={{ opacity: 0, y: -20 }}
             className="fixed top-16 left-1/2 -translate-x-1/2 z-50 px-4 py-2 rounded-2xl bg-amber-500/20 border border-amber-500 text-amber-200 text-xs font-bold shadow-2xl flex items-center gap-2 backdrop-blur-md"
           >
-            <span>🏦</span> GÓI CỨU TRỢ FED ĐÃ KÍCH HOẠT! 4 chỉ số đã được cân bằng lại 50%!
+            <span>🏦</span> Gói cứu trợ Fed kích hoạt (Cân bằng 50%)
           </motion.div>
         )}
 
@@ -446,7 +446,7 @@ function GamePageInner() {
             exit={{ opacity: 0, scale: 0.9 }}
             className="relative z-10 mx-auto mt-0.5 px-2.5 py-0.5 rounded-full bg-cyan-500/15 border border-cyan-500/40 text-cyan-300 text-[10px] font-bold flex items-center gap-1.5 shadow-sm"
           >
-            <span>👁️</span> THUỐC TIÊN TRI ĐANG BẬT ({gameState.inventory?.oracleCharges} lượt)
+            <span>👁️</span> Thuốc Tiên Tri ({gameState.inventory?.oracleCharges} lượt)
           </motion.div>
         )}
       </AnimatePresence>

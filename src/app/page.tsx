@@ -202,7 +202,7 @@ export default function MainMenu() {
               </p>
               <p>
                 Each scenario presents a dilemma.{" "}
-                <span className="text-amber-400">Swipe left or right</span> (or click the buttons) to make your choice.
+                <span className="text-amber-400">Swipe left or right</span> (or tap the choices directly on the card) to make your decision.
               </p>
               <div className="bg-zinc-800/50 rounded-lg p-3 space-y-2">
                 <p className="text-white font-semibold text-xs uppercase tracking-wider mb-2">
