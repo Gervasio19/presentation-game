@@ -1,45 +1,51 @@
 // ============================================================
-// LAPSE — Checkpoint Manager
+// LAPSE — Checkpoint Manager (Chapter-Based)
 // ============================================================
 
-import { Checkpoint } from "./gameTypes";
-
+import { Checkpoint, Meters } from "./gameTypes";
 
 /**
- * Create a checkpoint snapshot from the current game state.
+ * Create a checkpoint snapshot from the current chapter state.
  */
-export function createCheckpoint(day: number, progress: number): Checkpoint {
-  return { day, progress };
+export function createCheckpoint(chapter: number, meters: Meters): Checkpoint {
+  return { chapter, meters: { ...meters } };
 }
 
 /**
  * Add a checkpoint to the list.
- * If a checkpoint for that day already exists, overwrite it with the new one.
+ * If a checkpoint for that chapter already exists, overwrite it.
  */
 export function addCheckpoint(
   checkpoints: Checkpoint[],
   checkpoint: Checkpoint
 ): Checkpoint[] {
-  const filtered = checkpoints.filter((cp) => cp.day !== checkpoint.day);
-  return [...filtered, checkpoint].sort((a, b) => a.day - b.day);
+  const filtered = checkpoints.filter(
+    (cp) => cp.chapter !== checkpoint.chapter
+  );
+  return [...filtered, checkpoint].sort((a, b) => a.chapter - b.chapter);
 }
 
 /**
  * Get the available checkpoints for the player to choose from.
- * Returns up to 3 immediately preceding days.
+ * Returns up to 2 most recent chapter checkpoints before the current chapter.
  */
 export function getAvailableCheckpoints(
   checkpoints: Checkpoint[],
-  currentDay: number
+  currentChapter: number
 ): Checkpoint[] {
   return checkpoints
-    .filter((cp) => cp.day >= currentDay - 3 && cp.day < currentDay)
-    .sort((a, b) => a.day - b.day);
+    .filter((cp) => cp.chapter < currentChapter)
+    .sort((a, b) => b.chapter - a.chapter)
+    .slice(0, 2)
+    .sort((a, b) => a.chapter - b.chapter);
 }
 
 /**
  * Check if the player has any checkpoints available for restoration.
  */
-export function hasCheckpoints(checkpoints: Checkpoint[], currentDay: number): boolean {
-  return getAvailableCheckpoints(checkpoints, currentDay).length > 0;
+export function hasCheckpoints(
+  checkpoints: Checkpoint[],
+  currentChapter: number
+): boolean {
+  return getAvailableCheckpoints(checkpoints, currentChapter).length > 0;
 }
