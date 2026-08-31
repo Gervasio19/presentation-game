@@ -34,6 +34,8 @@ import DeathScreen from "@/components/game/DeathScreen";
 import ResultScreen from "@/components/game/ResultScreen";
 import ChapterSummary from "@/components/game/ChapterSummary";
 import ShopModal from "@/components/game/ShopModal";
+import KnowledgeCheckModal from "@/components/game/KnowledgeCheckModal";
+import { getKnowledgeCheckForCard, KnowledgeCheck } from "@/data/knowledgeChecks";
 import {
   saveGame,
   loadGame,
@@ -47,6 +49,7 @@ type GamePhase =
   | "tutorial"
   | "playing"
   | "transitioning"
+  | "knowledge_check"
   | "dead"
   | "eliminated"
   | "completed"
@@ -60,6 +63,9 @@ function GamePageInner() {
   const [isMounted, setIsMounted] = useState(false);
   const [gameState, setGameState] = useState<GameState>(() => createInitialState(true));
   const [phase, setPhase] = useState<GamePhase>("tutorial");
+
+  const [activeKnowledgeCheck, setActiveKnowledgeCheck] = useState<KnowledgeCheck | null>(null);
+  const pendingNextStateRef = useRef<GameState | null>(null);
 
   const [isShopOpen, setIsShopOpen] = useState(false);
   const [resurrectNotice, setResurrectNotice] = useState(false);
@@ -126,6 +132,28 @@ function GamePageInner() {
         setTimeout(() => setResurrectNotice(false), 4000);
       }
 
+      // If player died, handle death immediately
+      if (nextState.status === "dead" || nextState.status === "eliminated") {
+        setTimeout(() => {
+          setGameState(nextState);
+          setPhase(nextState.status === "dead" ? "dead" : "eliminated");
+          isProcessing.current = false;
+        }, 100);
+        return;
+      }
+
+      // Check if a conceptual Knowledge Check is triggered after this card
+      const check = getKnowledgeCheckForCard(gameState.chapter, gameState.cardIndex);
+      if (check) {
+        pendingNextStateRef.current = nextState;
+        setTimeout(() => {
+          setActiveKnowledgeCheck(check);
+          setPhase("knowledge_check");
+          isProcessing.current = false;
+        }, 200);
+        return;
+      }
+
       setTimeout(() => {
         setGameState(nextState);
 
@@ -134,11 +162,7 @@ function GamePageInner() {
           startTimer();
         }
 
-        if (nextState.status === "dead") {
-          setPhase("dead");
-        } else if (nextState.status === "eliminated") {
-          setPhase("eliminated");
-        } else if (nextState.status === "completed") {
+        if (nextState.status === "completed") {
           setPhase("completed");
           if (timerRef.current) clearInterval(timerRef.current);
         } else if (nextState.status === "chapter_complete") {
@@ -155,6 +179,49 @@ function GamePageInner() {
       }, 100);
     },
     [gameState, card]
+  );
+
+  // Handle Knowledge Check completion
+  const handleCompleteKnowledgeCheck = useCallback(
+    (isCorrect: boolean) => {
+      const nextState = pendingNextStateRef.current;
+      if (!nextState) {
+        setActiveKnowledgeCheck(null);
+        setPhase("playing");
+        return;
+      }
+
+      // Reward player on correct answer: grant +1 Oracle Charge
+      if (isCorrect && nextState.inventory) {
+        nextState.inventory = {
+          ...nextState.inventory,
+          oracleCharges: (nextState.inventory.oracleCharges || 0) + 1,
+          isOracleActive: true,
+        };
+      }
+
+      setGameState(nextState);
+      setActiveKnowledgeCheck(null);
+
+      // If transitioning from tutorial to chapter 1, start timer
+      if (gameState.chapter === 0 && nextState.chapter === 1) {
+        startTimer();
+      }
+
+      if (nextState.status === "completed") {
+        setPhase("completed");
+        if (timerRef.current) clearInterval(timerRef.current);
+      } else if (nextState.status === "chapter_complete") {
+        setPhase("chapter_summary");
+      } else if (nextState.status === "tutorial") {
+        setCardKey((k) => k + 1);
+        setPhase("tutorial");
+      } else {
+        setCardKey((k) => k + 1);
+        setPhase("playing");
+      }
+    },
+    [gameState.chapter]
   );
 
   // Button click → trigger card animation
@@ -460,6 +527,15 @@ function GamePageInner() {
 
       {/* ── Overlays ────────────────────────────────────── */}
       <AnimatePresence>
+        {/* Knowledge Check Modal */}
+        {phase === "knowledge_check" && activeKnowledgeCheck && (
+          <KnowledgeCheckModal
+            key={`overlay-kc-${activeKnowledgeCheck.id}`}
+            check={activeKnowledgeCheck}
+            onComplete={handleCompleteKnowledgeCheck}
+          />
+        )}
+
         {/* Shop Modal */}
         {isShopOpen && (
           <ShopModal
