@@ -214,7 +214,7 @@ export default function ShopModal({
                     <span className="text-[10px] text-zinc-500 font-mono">Đang có: x{inventory.oracleCharges}</span>
                   </div>
                   <p className="text-xs text-zinc-400 leading-relaxed mt-1">
-                    Mỗi lựa chọn đều để lại những hậu quả. Với món quà này, bạn có thể nhìn thấy trước biến động của các chỉ số (+5 lượt).
+                    Mỗi lựa chọn đều để lại những hậu quả. Với món quà này, bạn có thể nhìn thấy trước biến động của các chỉ số (+2 lượt).
                   </p>
                 </div>
               </div>

@@ -105,7 +105,7 @@ export default function KnowledgeCheckModal({
                 <>
                   <span className="text-emerald-400">✓</span>
                   <span className="text-emerald-300 uppercase tracking-wider">
-                    Chính xác! (+1 Lượt Thuốc Tiên Tri thưởng)
+                    Chính xác! (+3 Lượt Thuốc Tiên Tri thưởng)
                   </span>
                 </>
               ) : (

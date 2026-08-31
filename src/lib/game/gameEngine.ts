@@ -248,7 +248,7 @@ export function addInventoryItem(
   const current = state.inventory ? { ...state.inventory } : { ...INITIAL_INVENTORY };
 
   if (item === "oracle") {
-    current.oracleCharges += count * 5; // 5 card previews per purchase
+    current.oracleCharges += count * 2; // 2 card previews per purchase in shop
     current.isOracleActive = true;
   } else if (item === "extraHeart") {
     if (current.extraHeartPurchases >= MAX_EXTRA_HEARTS) return state;
