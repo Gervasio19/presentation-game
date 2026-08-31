@@ -218,26 +218,43 @@ const GameCard = forwardRef<GameCardHandle, GameCardProps>(
                 {card.description}
               </p>
 
-              {/* Choice hints */}
-              <div className="flex items-stretch gap-2 pt-1">
-                <div className="flex-1 bg-red-500/5 border border-red-500/20 rounded-xl p-2 text-center">
-                  <p className="text-[9px] uppercase tracking-widest text-red-400/70 mb-0.5 font-bold">
-                    ← Left
+              {/* Interactive Tap-to-Choose Buttons */}
+              <div className="grid grid-cols-2 gap-2 pt-1">
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    commitChoice("left");
+                  }}
+                  disabled={disabled}
+                  className="bg-red-500/10 hover:bg-red-500/20 active:scale-95 border border-red-500/30 rounded-xl p-2 text-center transition-all cursor-pointer shadow-sm group"
+                >
+                  <p className="text-[9px] uppercase tracking-widest text-red-400 font-bold mb-0.5 flex items-center justify-center gap-1">
+                    <span>←</span> Left
                   </p>
-                  <p className="text-[11px] text-red-200 font-medium leading-tight line-clamp-2">
+                  <p className="text-[11px] text-red-200 font-semibold leading-tight line-clamp-2">
                     {card.leftChoice}
                   </p>
                   {showEffects && <EffectsPreview effects={card.leftEffects} />}
-                </div>
-                <div className="flex-1 bg-emerald-500/5 border border-emerald-500/20 rounded-xl p-2 text-center">
-                  <p className="text-[9px] uppercase tracking-widest text-emerald-400/70 mb-0.5 font-bold">
-                    Right →
+                </button>
+
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    commitChoice("right");
+                  }}
+                  disabled={disabled}
+                  className="bg-emerald-500/10 hover:bg-emerald-500/20 active:scale-95 border border-emerald-500/30 rounded-xl p-2 text-center transition-all cursor-pointer shadow-sm group"
+                >
+                  <p className="text-[9px] uppercase tracking-widest text-emerald-400 font-bold mb-0.5 flex items-center justify-center gap-1">
+                    Right <span>→</span>
                   </p>
-                  <p className="text-[11px] text-emerald-200 font-medium leading-tight line-clamp-2">
+                  <p className="text-[11px] text-emerald-200 font-semibold leading-tight line-clamp-2">
                     {card.rightChoice}
                   </p>
                   {showEffects && <EffectsPreview effects={card.rightEffects} />}
-                </div>
+                </button>
               </div>
             </div>
           </motion.div>

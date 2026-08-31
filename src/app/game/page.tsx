@@ -28,7 +28,6 @@ import { getChapter } from "@/data/chapters";
 import GameCard, { GameCardHandle } from "@/components/game/GameCard";
 import MetersDisplay from "@/components/game/MetersDisplay";
 import ChapterProgress from "@/components/game/ChapterProgress";
-import ChoiceButton from "@/components/game/ChoiceButton";
 import CheckpointSelector from "@/components/game/CheckpointSelector";
 import DeathScreen from "@/components/game/DeathScreen";
 import ResultScreen from "@/components/game/ResultScreen";
@@ -222,17 +221,6 @@ function GamePageInner() {
       }
     },
     [gameState.chapter]
-  );
-
-  // Button click → trigger card animation
-  const handleButtonClick = useCallback(
-    (direction: SwipeDirection) => {
-      if (isProcessing.current || !card || !cardRef.current) return;
-      isProcessing.current = true;
-      setPhase("transitioning");
-      cardRef.current.triggerChoice(direction);
-    },
-    [card]
   );
 
   // Skip tutorial directly to chapter 1
@@ -500,30 +488,6 @@ function GamePageInner() {
             )}
         </AnimatePresence>
       </div>
-
-      {/* Bottom buttons */}
-      {card && (phase === "playing" || phase === "tutorial" || phase === "transitioning") && (
-        <div className="relative z-10 px-4 pb-6 pt-1 flex gap-3">
-          <ChoiceButton
-            key={`${card.id}-btn-left`}
-            direction="left"
-            label={card.leftChoice}
-            effects={card.leftEffects}
-            onChoose={handleButtonClick}
-            disabled={!isCardInteractive}
-            showEffects={isOracleActive}
-          />
-          <ChoiceButton
-            key={`${card.id}-btn-right`}
-            direction="right"
-            label={card.rightChoice}
-            effects={card.rightEffects}
-            onChoose={handleButtonClick}
-            disabled={!isCardInteractive}
-            showEffects={isOracleActive}
-          />
-        </div>
-      )}
 
       {/* ── Overlays ────────────────────────────────────── */}
       <AnimatePresence>
