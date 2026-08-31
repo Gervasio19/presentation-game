@@ -35,8 +35,8 @@ export default function KnowledgeCheckModal({
         {/* Header Badge */}
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <span className="px-3 py-1 rounded-full bg-cyan-500/20 text-cyan-300 text-[10px] font-bold uppercase tracking-wider border border-cyan-500/40 flex items-center gap-1.5 shadow-sm">
-              <span>🎯</span> KNOWLEDGE CHECK
+            <span className="px-3 py-1 rounded-full bg-cyan-500/20 text-cyan-300 text-[10px] font-bold uppercase tracking-wider border border-cyan-500/40 shadow-sm">
+              KNOWLEDGE CHECK
             </span>
             <span className="text-[11px] text-zinc-400 font-medium">
               Ch.{check.chapter}
@@ -94,27 +94,24 @@ export default function KnowledgeCheckModal({
           <motion.div
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            className={`p-4 rounded-2xl text-xs space-y-1.5 border ${
+            className={`p-3.5 rounded-2xl text-xs space-y-1 border ${
               isCorrect
                 ? "bg-emerald-500/15 border-emerald-500/40 text-emerald-200"
                 : "bg-amber-500/15 border-amber-500/40 text-amber-200"
             }`}
           >
-            <div className="flex items-center gap-2 font-bold text-xs">
+            <div className="flex items-center gap-1.5 font-bold text-xs">
               {isCorrect ? (
                 <>
                   <span className="text-emerald-400">✓</span>
-                  <span className="text-emerald-300 uppercase tracking-wider">
-                    Chính xác! (+3 Lượt Thuốc Tiên Tri thưởng)
+                  <span className="text-emerald-300 font-bold">
+                    +3 Thuốc Tiên Tri
                   </span>
                 </>
               ) : (
-                <>
-                  <span className="text-amber-400">ℹ️</span>
-                  <span className="text-amber-300 uppercase tracking-wider">
-                    Ghi nhớ kiến thức:
-                  </span>
-                </>
+                <span className="text-amber-300 font-bold">
+                  Explanation:
+                </span>
               )}
             </div>
             <p className="text-[11px] text-zinc-300 leading-relaxed font-sans">
@@ -131,7 +128,7 @@ export default function KnowledgeCheckModal({
             onClick={() => onComplete(isCorrect)}
             className="w-full py-3 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-black font-black text-xs uppercase tracking-wider shadow-lg shadow-cyan-500/20 transition-all active:scale-98 mt-1"
           >
-            Tiếp tục hành trình chính sách →
+            Continue →
           </motion.button>
         )}
       </motion.div>
