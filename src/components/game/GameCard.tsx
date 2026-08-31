@@ -181,8 +181,10 @@ const GameCard = forwardRef<GameCardHandle, GameCardProps>(
                     <img
                       src={card.imageUrl}
                       alt={card.title}
+                      referrerPolicy="no-referrer"
+                      loading="eager"
                       onError={() => setImageError(true)}
-                      className="w-full h-full object-cover filter brightness-[0.8] contrast-[1.1] transform group-hover:scale-105 transition-transform duration-700"
+                      className="w-full h-full object-cover filter brightness-[0.85] contrast-[1.05] transform group-hover:scale-105 transition-transform duration-700"
                     />
                     {/* Subtle dark gradient overlay */}
                     <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/30 to-transparent pointer-events-none" />

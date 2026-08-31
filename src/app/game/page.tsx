@@ -190,11 +190,11 @@ function GamePageInner() {
         return;
       }
 
-      // Reward player on correct answer: grant +3 Oracle Charges
+      // Reward player on correct answer: grant +2 Oracle Charges
       if (isCorrect && nextState.inventory) {
         nextState.inventory = {
           ...nextState.inventory,
-          oracleCharges: (nextState.inventory.oracleCharges || 0) + 3,
+          oracleCharges: (nextState.inventory.oracleCharges || 0) + 2,
           isOracleActive: true,
         };
       }
