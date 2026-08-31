@@ -25,18 +25,32 @@ let redisInstance: {
 async function getRedis() {
   if (redisInstance) return redisInstance;
 
-  const url = process.env.UPSTASH_REDIS_REST_URL;
-  const token = process.env.UPSTASH_REDIS_REST_TOKEN;
+  const url =
+    process.env.UPSTASH_REDIS_REST_URL ||
+    process.env.KV_REST_API_URL;
+  const token =
+    process.env.UPSTASH_REDIS_REST_TOKEN ||
+    process.env.KV_REST_API_TOKEN;
 
   if (url && token) {
     try {
       const { Redis } = await import("@upstash/redis");
       redisInstance = new Redis({ url, token });
       return redisInstance;
-    } catch {
-      // If @upstash/redis fails or is unavailable, fallback to in-memory store
+    } catch (err) {
+      console.error("Redis init with url/token error:", err);
     }
   }
+
+  // Fallback to Redis.fromEnv() which scans all standard Vercel KV and Upstash prefixes
+  try {
+    const { Redis } = await import("@upstash/redis");
+    redisInstance = Redis.fromEnv();
+    return redisInstance;
+  } catch {
+    // If no Redis environment is configured, fallback smoothly to in-memory store
+  }
+
   return null;
 }
 
