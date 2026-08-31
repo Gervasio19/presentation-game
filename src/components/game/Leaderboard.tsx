@@ -11,11 +11,31 @@ function formatTime(seconds: number): string {
 }
 
 export default function Leaderboard({ entries, currentPlayerName }: { entries: LeaderboardEntry[]; currentPlayerName?: string }) {
+  const handleAdminReset = async () => {
+    const secret = prompt("Nhập mã bảo mật Admin để Reset Bảng Xếp Hạng:");
+    if (!secret) return;
+
+    try {
+      const res = await fetch(`/api/leaderboard?secret=${encodeURIComponent(secret)}`, {
+        method: "DELETE",
+      });
+      const data = await res.json();
+      if (res.ok) {
+        alert("✓ Bảng xếp hạng đã được xóa sạch về 0!");
+        window.location.reload();
+      } else {
+        alert(data.error || "Sai mật khẩu Admin!");
+      }
+    } catch {
+      alert("Lỗi kết nối khi reset.");
+    }
+  };
+
   if (!entries || entries.length === 0) {
     return (
       <div className="w-full p-8 text-center bg-slate-900/50 rounded-xl border border-slate-700">
         <h2 className="text-xl font-bold text-amber-500 tracking-widest mb-4">🏆 LEADERBOARD</h2>
-        <p className="text-slate-400">No scores yet. Be the first to play!</p>
+        <p className="text-slate-400">Chưa có ai ghi điểm. Hãy là người đầu tiên!</p>
       </div>
     );
   }
@@ -77,6 +97,15 @@ export default function Leaderboard({ entries, currentPlayerName }: { entries: L
             })}
           </tbody>
         </table>
+      </div>
+
+      <div className="p-2.5 bg-slate-950/80 border-t border-slate-800/80 flex justify-center">
+        <button
+          onClick={handleAdminReset}
+          className="text-[10px] text-zinc-600 hover:text-red-400/80 transition-colors uppercase tracking-wider font-mono"
+        >
+          ⚙️ Admin Reset Leaderboard
+        </button>
       </div>
     </div>
   );

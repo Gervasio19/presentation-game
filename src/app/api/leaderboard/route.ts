@@ -221,3 +221,38 @@ export async function POST(request: NextRequest) {
     );
   }
 }
+
+// ── DELETE: Admin Reset Leaderboard ───────────────────────────
+
+export async function DELETE(request: NextRequest) {
+  try {
+    const { searchParams } = new URL(request.url);
+    const secret = searchParams.get("secret");
+
+    const adminSecret = process.env.ADMIN_SECRET || "seminar2008";
+
+    if (secret !== adminSecret) {
+      return NextResponse.json(
+        { error: "Sai mã bảo mật Admin Reset." },
+        { status: 401 }
+      );
+    }
+
+    const r = await getRedis();
+    if (r) {
+      await r.set(LEADERBOARD_KEY, []);
+    }
+    memoryStore = [];
+
+    return NextResponse.json({
+      success: true,
+      message: "Bảng xếp hạng đã được reset về 0 thành công!",
+    });
+  } catch (error) {
+    console.error("Leaderboard DELETE error:", error);
+    return NextResponse.json(
+      { error: "Lỗi khi reset bảng xếp hạng." },
+      { status: 500 }
+    );
+  }
+}
