@@ -119,6 +119,11 @@ export function makeChoice(
   if (state.chapter === 0 || state.status === "tutorial") {
     if (state.cardIndex >= TOTAL_TUTORIAL_CARDS) {
       // Completed tutorial -> start chapter 1 with fresh meters
+      // Left choice grants a tactical survival bonus (+1 Policy Insight)
+      if (direction === "left") {
+        updatedInventory.oracleCharges = (updatedInventory.oracleCharges || 0) + 1;
+        updatedInventory.isOracleActive = true;
+      }
       return {
         ...state,
         chapter: 1,

@@ -94,7 +94,7 @@ export default function KnowledgeCheckModal({
           <motion.div
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            className={`p-3.5 rounded-2xl text-xs space-y-1 border ${
+            className={`p-3.5 rounded-2xl text-xs space-y-2 border ${
               isCorrect
                 ? "bg-emerald-500/15 border-emerald-500/40 text-emerald-200"
                 : "bg-amber-500/15 border-amber-500/40 text-amber-200"
@@ -109,11 +109,19 @@ export default function KnowledgeCheckModal({
                   </span>
                 </>
               ) : (
-                <span className="text-amber-300 font-bold">
-                  Explanation:
+                <span className="text-amber-300 font-bold flex items-center gap-1">
+                  <span>💡</span> Concept Revealed (Cơ chế nhân - quả):
                 </span>
               )}
             </div>
+
+            {/* Causal Chain Highlight Banner */}
+            {check.causalChain && (
+              <div className="p-2 rounded-xl bg-black/40 border border-white/10 text-[11px] font-mono font-semibold text-amber-200 leading-snug">
+                🔗 {check.causalChain}
+              </div>
+            )}
+
             <p className="text-[11px] text-zinc-300 leading-relaxed font-sans">
               {check.explanation}
             </p>

@@ -12,6 +12,7 @@ export type KnowledgeCheck = {
   options: string[];
   correctIndex: number;
   explanation: string;
+  causalChain: string; // 1-line core causal mechanism
 };
 
 export const KNOWLEDGE_CHECKS: KnowledgeCheck[] = [
@@ -31,6 +32,7 @@ export const KNOWLEDGE_CHECKS: KnowledgeCheck[] = [
     correctIndex: 1, // B
     explanation:
       "Prolonged low policy rates suppressed yields on safe assets, creating a search-for-yield that incentivized financial institutions to expand leverage and channel credit into speculative real estate.",
+    causalChain: "Low policy rates → Cheap credit → Housing demand surge → Rising leverage → Systemic fragility",
   },
   {
     id: "kc-1-2",
@@ -47,6 +49,7 @@ export const KNOWLEDGE_CHECKS: KnowledgeCheck[] = [
     correctIndex: 2, // C
     explanation:
       "Subprime borrowing structures relied on perpetual home price appreciation to enable refinancing before teaser rates reset. Once housing prices plateaued, default rates surged rapidly.",
+    causalChain: "Relaxed lending standards → NINJA / ARM loans → Subprime expansion → High default vulnerability",
   },
 
   // ── CHAPTER 2: House of Cards ─────────────────────────────────
@@ -65,6 +68,7 @@ export const KNOWLEDGE_CHECKS: KnowledgeCheck[] = [
     correctIndex: 3, // D
     explanation:
       "Decoupling loan origination from long-term credit risk created moral hazard: originators maximized fee income through loan volume rather than vetting borrower creditworthiness.",
+    causalChain: "Originate-to-distribute → Fee-driven volume → Transferred credit risk → Moral hazard",
   },
   {
     id: "kc-2-2",
@@ -81,6 +85,7 @@ export const KNOWLEDGE_CHECKS: KnowledgeCheck[] = [
     correctIndex: 0, // A
     explanation:
       "As housing prices dropped, borrower negative equity drove default rates up, eroding the cash flows supporting subprime tranches and revealing that supposedly safe AAA securities were vulnerable to catastrophic losses.",
+    causalChain: "Falling home prices → Negative equity → Surging defaults → Breached CDO tranches",
   },
 
   // ── CHAPTER 3: The Collapse ───────────────────────────────────
@@ -99,6 +104,7 @@ export const KNOWLEDGE_CHECKS: KnowledgeCheck[] = [
     correctIndex: 1, // B
     explanation:
       "Because toxic mortgage exposures were buried in off-balance-sheet vehicles and complex derivatives, banks could not evaluate the solvency of their peers, leading to a breakdown of counterparty trust and cash hoarding.",
+    causalChain: "Hidden toxic debt → Balance sheet opacity → Asymmetric information → Interbank freeze",
   },
   {
     id: "kc-3-2",
@@ -115,6 +121,7 @@ export const KNOWLEDGE_CHECKS: KnowledgeCheck[] = [
     correctIndex: 2, // C
     explanation:
       "Lehman was a pivotal counterparty in wholesale repo and commercial paper markets. Its failure broke the $1 net asset value in the Reserve Primary Fund, sparking panic runs across the entire shadow banking architecture.",
+    causalChain: "Lehman collapse → Broken $1 NAV → Run on shadow banking → Wholesale liquidity seizure",
   },
 
   // ── CHAPTER 4: Global Contagion ───────────────────────────────
@@ -133,6 +140,7 @@ export const KNOWLEDGE_CHECKS: KnowledgeCheck[] = [
     correctIndex: 1, // B
     explanation:
       "Contagion transmitted across borders via three main channels: European banks holding toxic US structured credit, international dollar funding freezes (requiring central bank swap lines), and sharp drops in global trade demand.",
+    causalChain: "Cross-border asset holdings + Dollar liquidity freeze + Trade collapse → Global recession",
   },
 
   // ── CHAPTER 5: The Human Cost ─────────────────────────────────
@@ -151,6 +159,7 @@ export const KNOWLEDGE_CHECKS: KnowledgeCheck[] = [
     correctIndex: 3, // D
     explanation:
       "Capital losses force banks to deleverage and tighten lending standards (the credit crunch). Solvent businesses cannot secure credit for operations and payroll, translating financial distress into layoffs and lower output.",
+    causalChain: "Bank capital impairment → Credit contraction → Working capital squeeze → Mass layoffs",
   },
 
   // ── CHAPTER 6: Reform & Recovery ──────────────────────────────
@@ -169,22 +178,24 @@ export const KNOWLEDGE_CHECKS: KnowledgeCheck[] = [
     correctIndex: 0, // A
     explanation:
       "During a systemic crisis, private markets suffer coordination failure and liquidity hoarding. Public balance sheets must provide liquidity and capital backstops (TARP, QE, discount window) to avoid a 1930s-style depression.",
+    causalChain: "Market coordination failure → Liquidity runs → Public lender of last resort → Stabilization",
   },
   {
     id: "kc-6-2",
     chapter: 6,
     afterCardIndex: 6, // End of Chapter 6 (Final Milestone)
     milestoneTitle: "Milestone 2 — Long-Term Financial Resilience",
-    question: "What is the core macroprudential objective of Basel III and post-crisis regulatory frameworks?",
+    question: "What core principle reshaped banking regulation to make the financial system more resilient?",
     options: [
       "Permitting unrestricted leverage ratios for non-bank financial intermediaries",
       "Eliminating all counterparty disclosure requirements across OTC derivatives markets",
-      "Enforcing countercyclical capital buffers and robust liquidity ratios (LCR, NSFR) to absorb systemic shocks",
+      "Requiring banks to maintain higher loss-absorbing capital buffers and resilient liquidity reserves",
       "Prohibiting commercial banks from maintaining liquid sovereign debt reserves",
     ],
     correctIndex: 2, // C
     explanation:
-      "Basel III shifted regulation from purely microprudential bank-level solvency to macroprudential systemic resilience, requiring higher-quality common equity, conservation buffers, and explicit liquidity buffers (LCR and NSFR).",
+      "Post-crisis reforms (Basel III, Dodd-Frank) shifted focus from individual bank solvency to macroprudential systemic resilience, requiring higher-quality common equity buffers and liquid reserves to survive severe market distress.",
+    causalChain: "Systemic fragility → Thicker capital buffers + Liquid reserves → Macroprudential resilience",
   },
 ];
 

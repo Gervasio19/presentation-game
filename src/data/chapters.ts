@@ -55,9 +55,9 @@ export const chapters: ChapterInfo[] = [
   {
     chapter: 3,
     title: "The Collapse",
-    subtitle: "When the Giants Fell",
-    period: "September 2008",
-    description: "The crisis reaches its breaking point. Major financial institutions face bankruptcy, credit markets freeze completely, and global panic sets in as the dominos fall.",
+    subtitle: "From Contagion to Panic",
+    period: "2008",
+    description: "The crisis reaches its breaking point from March to October 2008. Major financial institutions face bankruptcy, credit markets freeze completely, and global panic sets in as the dominos fall.",
     knowledgeSummary: [
       "Liquidity Crisis: Interbank lending froze as institutions feared exposure to toxic counterparties.",
       "Loss of Confidence: Bear Stearns and Lehman Brothers collapsed as wholesale funding evaporated.",
