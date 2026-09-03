@@ -23,12 +23,12 @@ export const KNOWLEDGE_CHECKS: KnowledgeCheck[] = [
     milestoneTitle: "Milestone 1 — Credit & The Bubble",
     question: "Why did low interest rates contribute to the housing bubble?",
     options: [
-      "They made borrowing cheaper and encouraged housing demand",
       "They reduced the supply of houses",
+      "They made borrowing cheaper and encouraged housing demand",
       "They prevented banks from lending",
       "They increased mortgage repayment costs",
     ],
-    correctIndex: 0,
+    correctIndex: 1, // B
     explanation:
       "Low interest rates lowered the cost of borrowing, fueling massive mortgage demand and speculative buying that drove house prices far beyond fundamental income levels.",
   },
@@ -39,12 +39,12 @@ export const KNOWLEDGE_CHECKS: KnowledgeCheck[] = [
     milestoneTitle: "Milestone 2 — Mortgage Risk Dynamics",
     question: "What made the growing mortgage market increasingly risky?",
     options: [
-      "Lending expanded to increasingly risky borrowers",
       "Borrowing became more expensive",
       "Banks stopped issuing mortgages",
+      "Lending expanded to increasingly risky borrowers",
       "House prices became fixed",
     ],
-    correctIndex: 0,
+    correctIndex: 2, // C
     explanation:
       "Lending standards deteriorated through ARMs and NINJA loans, expanding credit to subprime borrowers who were vulnerable to default as soon as teaser rates expired.",
   },
@@ -57,12 +57,12 @@ export const KNOWLEDGE_CHECKS: KnowledgeCheck[] = [
     milestoneTitle: "Milestone 1 — Securitization Mechanics",
     question: "What happened to mortgage risk after securitization?",
     options: [
+      "It disappeared completely from the financial system",
+      "It was guaranteed 100% by subprime borrowers",
+      "It became completely unrelated to housing market prices",
       "It was transferred and redistributed across financial institutions and investors",
-      "It disappeared completely",
-      "It was guaranteed 100% by borrowers",
-      "It became unrelated to housing prices",
     ],
-    correctIndex: 0,
+    correctIndex: 3, // D
     explanation:
       "Securitization packaged and redistributed mortgage risk worldwide via MBS and CDOs, obscuring where toxic debts were hidden rather than eliminating the risk.",
   },
@@ -78,7 +78,7 @@ export const KNOWLEDGE_CHECKS: KnowledgeCheck[] = [
       "Borrowers received higher house values from banks",
       "Banks stopped collecting monthly payments",
     ],
-    correctIndex: 0,
+    correctIndex: 0, // A
     explanation:
       "When housing prices plateaued and fell, homeowners with negative equity could no longer refinance, triggering widespread defaults when their adjustable rates reset.",
   },
@@ -91,12 +91,12 @@ export const KNOWLEDGE_CHECKS: KnowledgeCheck[] = [
     milestoneTitle: "Milestone 1 — Liquidity & The Interbank Freeze",
     question: "Why did banks become reluctant to lend to one another?",
     options: [
+      "They expected interest rates to disappear entirely",
       "They were uncertain about the losses and risks held by other institutions",
-      "They expected interest rates to disappear",
       "They had too much surplus cash in vaults",
       "The housing market had fully recovered",
     ],
-    correctIndex: 0,
+    correctIndex: 1, // B
     explanation:
       "A total breakdown of counterparty trust occurred: because banks did not know which peers held toxic mortgage assets, interbank lending (LIBOR) froze completely.",
   },
@@ -107,12 +107,12 @@ export const KNOWLEDGE_CHECKS: KnowledgeCheck[] = [
     milestoneTitle: "Milestone 2 — Systemic Interconnectedness",
     question: "Why could the failure of a major financial institution threaten the entire financial system?",
     options: [
-      "Financial institutions were highly interconnected",
       "Large firms cannot legally go bankrupt",
       "Lehman controlled the Federal Reserve",
+      "Financial institutions were highly interconnected",
       "Bankruptcy automatically increases house prices",
     ],
-    correctIndex: 0,
+    correctIndex: 2, // C
     explanation:
       "Major investment banks were tightly interconnected nodes in the global financial web through repo loans, CDS contracts, and derivatives; one node's collapse cascaded across the entire system.",
   },
@@ -125,12 +125,12 @@ export const KNOWLEDGE_CHECKS: KnowledgeCheck[] = [
     milestoneTitle: "Milestone 1 — Cross-Border Contagion Channels",
     question: "How can a financial crisis spread from one country to another?",
     options: [
+      "Only through international tourism and travel",
       "Through financial exposure, funding markets and international trade",
-      "Only through international tourism",
-      "Exclusively through exchange rate fluctuations",
+      "Exclusively through consumer price changes",
       "It cannot spread internationally",
     ],
-    correctIndex: 0,
+    correctIndex: 1, // B
     explanation:
       "Cross-border contagion transmits through three primary channels: foreign asset exposures on bank balance sheets, global interbank funding freezes, and collapsing trade demand.",
   },
@@ -143,12 +143,12 @@ export const KNOWLEDGE_CHECKS: KnowledgeCheck[] = [
     milestoneTitle: "Milestone 1 — The Real Economy Transmission",
     question: "How can a banking crisis affect employment?",
     options: [
+      "Banks directly employ all working households",
+      "Unemployment always falls during a banking crisis",
+      "Credit conditions have no effect on real firms",
       "Credit contraction can reduce business investment and hiring",
-      "Banks directly create jobs for every household",
-      "Unemployment always falls during a crisis",
-      "Credit conditions have no effect on firms",
     ],
-    correctIndex: 0,
+    correctIndex: 3, // D
     explanation:
       "When the banking sector contracts credit, businesses cannot obtain working capital for payroll and investment, translating financial distress directly into mass layoffs in the real economy.",
   },
@@ -166,7 +166,7 @@ export const KNOWLEDGE_CHECKS: KnowledgeCheck[] = [
       "To encourage higher mortgage default rates",
       "To make housing prices permanently rise forever",
     ],
-    correctIndex: 0,
+    correctIndex: 0, // A
     explanation:
       "Governments and central banks acted as lenders and spenders of last resort to fix systemic market failure, inject liquidity, and prevent a prolonged 1930s-style Great Depression.",
   },
@@ -177,12 +177,12 @@ export const KNOWLEDGE_CHECKS: KnowledgeCheck[] = [
     milestoneTitle: "Milestone 2 — Long-Term Financial Resilience",
     question: "Which approach can make the financial system more resilient to future crises?",
     options: [
+      "Unlimited leverage ratios for investment banks",
+      "Weaker risk management and capital standards",
       "Higher capital and liquidity requirements",
-      "Unlimited leverage ratios",
-      "Weaker risk management models",
-      "Less disclosure and transparency",
+      "Less financial disclosure and public transparency",
     ],
-    correctIndex: 0,
+    correctIndex: 2, // C
     explanation:
       "Regulatory frameworks like Basel III (LCR, NSFR) and Dodd-Frank enforce higher tier-1 capital buffers, robust liquidity reserves, and strict oversight to absorb future financial shocks.",
   },
