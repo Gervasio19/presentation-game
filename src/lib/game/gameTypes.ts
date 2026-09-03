@@ -165,6 +165,7 @@ export type LeaderboardEntry = {
   id: string;
   name: string;
   score: number;
+  bonusPoints?: number; // Điểm thưởng seminar / phát biểu (+0.5, +1.0, ...)
   chaptersCompleted: number;
   timeSeconds: number;
   finalMeters: Meters;

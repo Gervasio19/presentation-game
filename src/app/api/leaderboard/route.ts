@@ -194,6 +194,9 @@ export async function POST(request: NextRequest) {
 
     if (existingIdx !== -1) {
       const existing = entries[existingIdx];
+      // Preserve any existing seminar bonus points awarded by presenter
+      entry.bonusPoints = existing.bonusPoints ?? 0;
+
       const isBetter =
         entry.chaptersCompleted > existing.chaptersCompleted ||
         (entry.chaptersCompleted === existing.chaptersCompleted && entry.score > existing.score) ||
@@ -217,6 +220,69 @@ export async function POST(request: NextRequest) {
     console.error("Leaderboard POST error:", error);
     return NextResponse.json(
       { error: "Đã xảy ra lỗi khi lưu bảng xếp hạng." },
+      { status: 500 }
+    );
+  }
+}
+
+// ── PATCH: Award or Deduct Seminar Bonus Points (+0.5) ────────
+
+export async function PATCH(request: NextRequest) {
+  try {
+    const body = await request.json();
+    const { name, id, delta = 0.5 } = body;
+
+    if (!name && !id) {
+      return NextResponse.json(
+        { error: "Thiếu thông tin người chơi cần cộng điểm." },
+        { status: 400 }
+      );
+    }
+
+    const entries = await getEntries();
+    let targetIdx = entries.findIndex(
+      (e) => (id && e.id === id) || (name && e.name.toLowerCase() === String(name).trim().toLowerCase())
+    );
+
+    // If student is not yet on the board, register a preliminary entry
+    if (targetIdx === -1) {
+      const cleanName = sanitizeName(name);
+      if (!cleanName) {
+        return NextResponse.json(
+          { error: "Tên người chơi không hợp lệ." },
+          { status: 400 }
+        );
+      }
+      const newEntry: LeaderboardEntry = {
+        id: `${cleanName.toLowerCase()}-${Date.now()}`,
+        name: cleanName,
+        score: 0,
+        bonusPoints: Math.max(0, Math.round(Number(delta) * 10) / 10),
+        chaptersCompleted: 0,
+        timeSeconds: 0,
+        finalMeters: { economy: 50, publicTrust: 50, policyPower: 50, bankingHealth: 50 },
+        submittedAt: new Date().toISOString(),
+      };
+      entries.push(newEntry);
+      targetIdx = entries.length - 1;
+    } else {
+      const current = Number(entries[targetIdx].bonusPoints ?? 0);
+      const updatedBonus = Math.max(0, Math.round((current + Number(delta)) * 10) / 10);
+      entries[targetIdx].bonusPoints = updatedBonus;
+    }
+
+    const sorted = sortEntries(entries);
+    await saveEntries(sorted);
+
+    return NextResponse.json({
+      success: true,
+      entry: entries[targetIdx],
+      entries: sorted,
+    });
+  } catch (error) {
+    console.error("Leaderboard PATCH error:", error);
+    return NextResponse.json(
+      { error: "Lỗi khi cập nhật điểm thưởng." },
       { status: 500 }
     );
   }

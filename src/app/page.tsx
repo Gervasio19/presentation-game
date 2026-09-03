@@ -35,9 +35,25 @@ export default function MainMenu() {
     setLeaderboardLoading(false);
   }, []);
 
+  useEffect(() => {
+    if (modal !== "leaderboard") return;
+    fetchLeaderboard();
+
+    // Live auto-refresh polling every 3 seconds for real-time classroom updates
+    const interval = setInterval(() => {
+      fetch("/api/leaderboard")
+        .then((res) => res.json())
+        .then((data) => {
+          if (data?.entries) setLeaderboardEntries(data.entries);
+        })
+        .catch(() => {});
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [modal, fetchLeaderboard]);
+
   const handleOpenLeaderboard = () => {
     setModal("leaderboard");
-    fetchLeaderboard();
   };
 
   const handlePlayClick = () => {
@@ -266,10 +282,22 @@ export default function MainMenu() {
                 Loading...
               </div>
             ) : (
-              <Leaderboard
-                entries={leaderboardEntries}
-                currentPlayerName={playerName}
-              />
+              <div className="space-y-3">
+                <div className="flex justify-end">
+                  <Link
+                    href="/leaderboard"
+                    target="_blank"
+                    className="text-[11px] text-amber-400 hover:text-amber-300 font-semibold underline underline-offset-4 flex items-center gap-1"
+                  >
+                    🖥️ Mở toàn màn hình (Cho máy chiếu) ↗
+                  </Link>
+                </div>
+                <Leaderboard
+                  entries={leaderboardEntries}
+                  currentPlayerName={playerName}
+                  onRefresh={fetchLeaderboard}
+                />
+              </div>
             )}
           </Modal>
         )}
