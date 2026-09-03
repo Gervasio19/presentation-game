@@ -446,7 +446,7 @@ function GamePageInner() {
             exit={{ opacity: 0, scale: 0.9 }}
             className="relative z-10 mx-auto mt-0.5 px-2.5 py-0.5 rounded-full bg-cyan-500/15 border border-cyan-500/40 text-cyan-300 text-[10px] font-bold flex items-center gap-1.5 shadow-sm"
           >
-            <span>👁️</span> Thuốc Tiên Tri ({gameState.inventory?.oracleCharges} lượt)
+            <span>🧠</span> Policy Insight ({gameState.inventory?.oracleCharges} lượt)
           </motion.div>
         )}
       </AnimatePresence>

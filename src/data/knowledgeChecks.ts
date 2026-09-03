@@ -21,32 +21,32 @@ export const KNOWLEDGE_CHECKS: KnowledgeCheck[] = [
     chapter: 1,
     afterCardIndex: 2, // After Greenspan (Card 1) + Subprime (Card 2)
     milestoneTitle: "Milestone 1 — Credit & The Bubble",
-    question: "Why did low interest rates contribute to the housing bubble?",
+    question: "Why did sustained low interest rates contribute to systemic financial fragility?",
     options: [
-      "They reduced the supply of houses",
-      "They made borrowing cheaper and encouraged housing demand",
-      "They prevented banks from lending",
-      "They increased mortgage repayment costs",
+      "They directly increased commercial bank capital adequacy ratios",
+      "They lowered borrowing costs, fueled speculative housing demand, and encouraged search-for-yield through high leverage",
+      "They eliminated counterparty default risks in secondary mortgage markets",
+      "They reduced investor demand for high-yielding structured credit products",
     ],
     correctIndex: 1, // B
     explanation:
-      "Low interest rates lowered the cost of borrowing, fueling massive mortgage demand and speculative buying that drove house prices far beyond fundamental income levels.",
+      "Prolonged low policy rates suppressed yields on safe assets, creating a search-for-yield that incentivized financial institutions to expand leverage and channel credit into speculative real estate.",
   },
   {
     id: "kc-1-2",
     chapter: 1,
     afterCardIndex: 6, // End of Chapter 1
     milestoneTitle: "Milestone 2 — Mortgage Risk Dynamics",
-    question: "What made the growing mortgage market increasingly risky?",
+    question: "How did deteriorating mortgage underwriting standards (e.g., ARMs, NINJA loans) heighten systemic vulnerability?",
     options: [
-      "Borrowing became more expensive",
-      "Banks stopped issuing mortgages",
-      "Lending expanded to increasingly risky borrowers",
-      "House prices became fixed",
+      "By stabilizing long-term household debt service burdens against economic shocks",
+      "By eliminating refinancing frictions across the primary mortgage market",
+      "By extending credit to borrowers whose solvency depended on continuous house price appreciation to refinance",
+      "By guaranteeing fixed low interest payments regardless of macroeconomic fluctuations",
     ],
     correctIndex: 2, // C
     explanation:
-      "Lending standards deteriorated through ARMs and NINJA loans, expanding credit to subprime borrowers who were vulnerable to default as soon as teaser rates expired.",
+      "Subprime borrowing structures relied on perpetual home price appreciation to enable refinancing before teaser rates reset. Once housing prices plateaued, default rates surged rapidly.",
   },
 
   // ── CHAPTER 2: House of Cards ─────────────────────────────────
@@ -55,32 +55,32 @@ export const KNOWLEDGE_CHECKS: KnowledgeCheck[] = [
     chapter: 2,
     afterCardIndex: 2, // After MBS (Card 1) & CDO (Card 2)
     milestoneTitle: "Milestone 1 — Securitization Mechanics",
-    question: "What happened to mortgage risk after securitization?",
+    question: "Why did the 'Originate-to-Distribute' model weaken risk management across the mortgage pipeline?",
     options: [
-      "It disappeared completely from the financial system",
-      "It was guaranteed 100% by subprime borrowers",
-      "It became completely unrelated to housing market prices",
-      "It was transferred and redistributed across financial institutions and investors",
+      "Originators were legally required to retain 100% of mortgage default risks on their balance sheets",
+      "Securitization completely eliminated the underlying credit default risk of subprime borrowers",
+      "Credit rating agencies conducted independent on-site audits of every single borrower application",
+      "Originators earned upfront fees from loan volume while transferring downstream credit default risk to external investors",
     ],
     correctIndex: 3, // D
     explanation:
-      "Securitization packaged and redistributed mortgage risk worldwide via MBS and CDOs, obscuring where toxic debts were hidden rather than eliminating the risk.",
+      "Decoupling loan origination from long-term credit risk created moral hazard: originators maximized fee income through loan volume rather than vetting borrower creditworthiness.",
   },
   {
     id: "kc-2-2",
     chapter: 2,
     afterCardIndex: 6, // End of Chapter 2 (LIBOR freeze)
     milestoneTitle: "Milestone 2 — The Housing Trigger",
-    question: "Why did falling house prices create problems for borrowers with ARM mortgages?",
+    question: "How did declining home prices trigger a systemic chain reaction through structured securities (MBS & CDOs)?",
     options: [
-      "Refinancing became more difficult while payments could increase",
-      "Mortgage rates automatically dropped to zero",
-      "Borrowers received higher house values from banks",
-      "Banks stopped collecting monthly payments",
+      "Falling home equity prevented refinancing, causing mortgage defaults that eroded cash flows across securitized tranches",
+      "It automatically increased the secondary market liquidity of senior AAA debt tranches",
+      "It prompted credit rating agencies to upgrade subprime CDOs to sovereign debt status",
+      "It converted risky non-prime mortgages directly into liquid short-term US Treasury bills",
     ],
     correctIndex: 0, // A
     explanation:
-      "When housing prices plateaued and fell, homeowners with negative equity could no longer refinance, triggering widespread defaults when their adjustable rates reset.",
+      "As housing prices dropped, borrower negative equity drove default rates up, eroding the cash flows supporting subprime tranches and revealing that supposedly safe AAA securities were vulnerable to catastrophic losses.",
   },
 
   // ── CHAPTER 3: The Collapse ───────────────────────────────────
@@ -89,32 +89,32 @@ export const KNOWLEDGE_CHECKS: KnowledgeCheck[] = [
     chapter: 3,
     afterCardIndex: 2, // After Bear Stearns (Card 1) & Fannie/Freddie (Card 2)
     milestoneTitle: "Milestone 1 — Liquidity & The Interbank Freeze",
-    question: "Why did banks become reluctant to lend to one another?",
+    question: "Why did the interbank lending market (LIBOR) freeze during the initial phase of the collapse?",
     options: [
-      "They expected interest rates to disappear entirely",
-      "They were uncertain about the losses and risks held by other institutions",
-      "They had too much surplus cash in vaults",
-      "The housing market had fully recovered",
+      "Central banks mandated that interbank overnight interest rates remain strictly negative",
+      "Asymmetric information and asset opacity made banks fear their counterparties held fatal toxic exposures",
+      "Major financial institutions held excess capital reserves with zero counterparty credit risk",
+      "The housing market had fully stabilized, eliminating the need for short-term wholesale funding",
     ],
     correctIndex: 1, // B
     explanation:
-      "A total breakdown of counterparty trust occurred: because banks did not know which peers held toxic mortgage assets, interbank lending (LIBOR) froze completely.",
+      "Because toxic mortgage exposures were buried in off-balance-sheet vehicles and complex derivatives, banks could not evaluate the solvency of their peers, leading to a breakdown of counterparty trust and cash hoarding.",
   },
   {
     id: "kc-3-2",
     chapter: 3,
     afterCardIndex: 4, // After Lehman (Card 3) & AIG (Card 4)
     milestoneTitle: "Milestone 2 — Systemic Interconnectedness",
-    question: "Why could the failure of a major financial institution threaten the entire financial system?",
+    question: "Why did the failure of Lehman Brothers trigger an immediate worldwide liquidity seizure?",
     options: [
-      "Large firms cannot legally go bankrupt",
-      "Lehman controlled the Federal Reserve",
-      "Financial institutions were highly interconnected",
-      "Bankruptcy automatically increases house prices",
+      "Lehman held all foreign exchange reserves of the US Department of the Treasury",
+      "Lehman had zero repo funding or derivative counterparties across Wall Street",
+      "Its bankruptcy shattered market confidence, froze commercial paper, and sparked runs on wholesale short-term funding",
+      "It immediately generated an abundant surplus of credit for small and medium-sized enterprises",
     ],
     correctIndex: 2, // C
     explanation:
-      "Major investment banks were tightly interconnected nodes in the global financial web through repo loans, CDS contracts, and derivatives; one node's collapse cascaded across the entire system.",
+      "Lehman was a pivotal counterparty in wholesale repo and commercial paper markets. Its failure broke the $1 net asset value in the Reserve Primary Fund, sparking panic runs across the entire shadow banking architecture.",
   },
 
   // ── CHAPTER 4: Global Contagion ───────────────────────────────
@@ -123,16 +123,16 @@ export const KNOWLEDGE_CHECKS: KnowledgeCheck[] = [
     chapter: 4,
     afterCardIndex: 3, // After European contagion, Iceland & Asian comparison
     milestoneTitle: "Milestone 1 — Cross-Border Contagion Channels",
-    question: "How can a financial crisis spread from one country to another?",
+    question: "Through which primary transmission channels did the US financial crisis spread globally?",
     options: [
-      "Only through international tourism and travel",
-      "Through financial exposure, funding markets and international trade",
-      "Exclusively through consumer price changes",
-      "It cannot spread internationally",
+      "Solely through international tourism expenditures and diplomatic ties",
+      "Direct balance sheet asset exposures, frozen cross-border dollar funding, and contraction in international trade",
+      "Exclusively through fluctuations in local emerging market agricultural commodities",
+      "Sovereign wealth fund direct purchases of overseas commercial real estate",
     ],
     correctIndex: 1, // B
     explanation:
-      "Cross-border contagion transmits through three primary channels: foreign asset exposures on bank balance sheets, global interbank funding freezes, and collapsing trade demand.",
+      "Contagion transmitted across borders via three main channels: European banks holding toxic US structured credit, international dollar funding freezes (requiring central bank swap lines), and sharp drops in global trade demand.",
   },
 
   // ── CHAPTER 5: The Human Cost ─────────────────────────────────
@@ -141,16 +141,16 @@ export const KNOWLEDGE_CHECKS: KnowledgeCheck[] = [
     chapter: 5,
     afterCardIndex: 3, // After unemployment, foreclosures & credit paradox
     milestoneTitle: "Milestone 1 — The Real Economy Transmission",
-    question: "How can a banking crisis affect employment?",
+    question: "How does a banking sector balance sheet impairment transmit distress into the real economy (employment and output)?",
     options: [
-      "Banks directly employ all working households",
-      "Unemployment always falls during a banking crisis",
-      "Credit conditions have no effect on real firms",
-      "Credit contraction can reduce business investment and hiring",
+      "Banks immediately expand corporate lending to offset internal trading portfolio losses",
+      "Falling equity prices automatically boost business capital expenditure and hiring",
+      "Credit conditions have no measurable relationship with real business cash flows or employment",
+      "Banks contract credit supply to rebuild capital buffers, starving firms of working capital and forcing retrenchment",
     ],
     correctIndex: 3, // D
     explanation:
-      "When the banking sector contracts credit, businesses cannot obtain working capital for payroll and investment, translating financial distress directly into mass layoffs in the real economy.",
+      "Capital losses force banks to deleverage and tighten lending standards (the credit crunch). Solvent businesses cannot secure credit for operations and payroll, translating financial distress into layoffs and lower output.",
   },
 
   // ── CHAPTER 6: Reform & Recovery ──────────────────────────────
@@ -159,32 +159,32 @@ export const KNOWLEDGE_CHECKS: KnowledgeCheck[] = [
     chapter: 6,
     afterCardIndex: 2, // After TARP (Card 1) & QE (Card 2)
     milestoneTitle: "Milestone 1 — State & Central Bank Intervention",
-    question: "Why did governments and central banks intervene during the crisis?",
+    question: "Why are central banks and governments compelled to act as 'lenders and spenders of last resort' during a systemic panic?",
     options: [
-      "To stabilize financial markets and prevent a deeper economic collapse",
-      "To eliminate all private commercial banks",
-      "To encourage higher mortgage default rates",
-      "To make housing prices permanently rise forever",
+      "To arrest self-fulfilling liquidity runs, restore market confidence, and prevent debt-deflation spirals",
+      "To permanently eliminate private commercial banks in favor of state monopolies",
+      "To intentionally drive mortgage foreclosure rates higher to clear markets faster",
+      "To guarantee that real estate asset price inflation permanently outpaces productivity growth",
     ],
     correctIndex: 0, // A
     explanation:
-      "Governments and central banks acted as lenders and spenders of last resort to fix systemic market failure, inject liquidity, and prevent a prolonged 1930s-style Great Depression.",
+      "During a systemic crisis, private markets suffer coordination failure and liquidity hoarding. Public balance sheets must provide liquidity and capital backstops (TARP, QE, discount window) to avoid a 1930s-style depression.",
   },
   {
     id: "kc-6-2",
     chapter: 6,
     afterCardIndex: 6, // End of Chapter 6 (Final Milestone)
     milestoneTitle: "Milestone 2 — Long-Term Financial Resilience",
-    question: "Which approach can make the financial system more resilient to future crises?",
+    question: "What is the core macroprudential objective of Basel III and post-crisis regulatory frameworks?",
     options: [
-      "Unlimited leverage ratios for investment banks",
-      "Weaker risk management and capital standards",
-      "Higher capital and liquidity requirements",
-      "Less financial disclosure and public transparency",
+      "Permitting unrestricted leverage ratios for non-bank financial intermediaries",
+      "Eliminating all counterparty disclosure requirements across OTC derivatives markets",
+      "Enforcing countercyclical capital buffers and robust liquidity ratios (LCR, NSFR) to absorb systemic shocks",
+      "Prohibiting commercial banks from maintaining liquid sovereign debt reserves",
     ],
     correctIndex: 2, // C
     explanation:
-      "Regulatory frameworks like Basel III (LCR, NSFR) and Dodd-Frank enforce higher tier-1 capital buffers, robust liquidity reserves, and strict oversight to absorb future financial shocks.",
+      "Basel III shifted regulation from purely microprudential bank-level solvency to macroprudential systemic resilience, requiring higher-quality common equity, conservation buffers, and explicit liquidity buffers (LCR and NSFR).",
   },
 ];
 

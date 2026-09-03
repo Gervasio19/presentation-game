@@ -105,7 +105,7 @@ export default function KnowledgeCheckModal({
                 <>
                   <span className="text-emerald-400">✓</span>
                   <span className="text-emerald-300 font-bold">
-                    +2 Thuốc Tiên Tri
+                    🧠 +2 Policy Insight (Xem trước tác động vĩ mô)
                   </span>
                 </>
               ) : (

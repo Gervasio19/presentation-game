@@ -146,14 +146,14 @@ export default function ShopModal({
                 {inventory.oracleCharges > 0 && (
                   <div className="p-3 rounded-xl bg-cyan-950/30 border border-cyan-500/30 flex items-center justify-between">
                     <div className="flex items-center gap-2.5">
-                      <span className="text-2xl">👁️</span>
+                      <span className="text-2xl">🧠</span>
                       <div>
-                        <p className="text-xs font-bold text-cyan-300">Thuốc Tiên Tri</p>
-                        <p className="text-[10px] text-cyan-400/80">Còn {inventory.oracleCharges} lượt xem trước</p>
+                        <p className="text-xs font-bold text-cyan-300">Policy Insight (Dự báo Vĩ mô)</p>
+                        <p className="text-[10px] text-cyan-400/80">Còn {inventory.oracleCharges} lượt phân tích dự báo</p>
                       </div>
                     </div>
                     <span className="text-[10px] bg-cyan-500/20 text-cyan-300 font-bold px-2 py-1 rounded-full border border-cyan-500/40">
-                      ON
+                      ACTIVE
                     </span>
                   </div>
                 )}
@@ -202,19 +202,19 @@ export default function ShopModal({
               <span>🛍️</span> Cửa hàng vật phẩm
             </h3>
 
-            {/* Item 1: Oracle Potion */}
+            {/* Item 1: Policy Insight */}
             <div className="p-4 rounded-2xl bg-zinc-950/80 border border-zinc-800 hover:border-cyan-500/40 transition-colors space-y-3">
               <div className="flex items-start gap-3">
                 <div className="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-2xl shrink-0">
-                  👁️
+                  🧠
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center justify-between">
-                    <h4 className="text-sm font-bold text-white">Thuốc Tiên Tri</h4>
+                    <h4 className="text-sm font-bold text-white">Policy Insight (Phân Tích Dự Báo)</h4>
                     <span className="text-[10px] text-zinc-500 font-mono">Đang có: x{inventory.oracleCharges}</span>
                   </div>
                   <p className="text-xs text-zinc-400 leading-relaxed mt-1">
-                    Mỗi lựa chọn đều để lại những hậu quả. Với món quà này, bạn có thể nhìn thấy trước biến động của các chỉ số (+2 lượt).
+                    Dự báo kinh tế vĩ mô: xem trước biến động của 4 trụ cột chính sách trước khi đưa ra quyết định (+2 lượt).
                   </p>
                 </div>
               </div>

@@ -258,6 +258,11 @@ const GameCard = forwardRef<GameCardHandle, GameCardProps>(
                   {showEffects && <EffectsPreview effects={card.rightEffects} />}
                 </button>
               </div>
+
+              {/* Historical simulation disclaimer */}
+              <p className="text-[9px] text-zinc-500 italic pt-0.5 tracking-tight">
+                Historical Simulation — Decisions explore counterfactual policy trade-offs
+              </p>
             </div>
           </motion.div>
         </div>
